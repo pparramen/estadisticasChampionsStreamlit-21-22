@@ -1,7 +1,7 @@
 import geopandas as gpd
 from matplotlib import colors
+from matplotlib.colors import ListedColormap, BoundaryNorm, Normalize
 import geopandas as gpd
-from matplotlib.colors import Normalize
 from matplotlib.cm import ScalarMappable
 import pandas as pd
 import streamlit as st
@@ -37,9 +37,14 @@ st.title('Análisis de equipos por país en la Champions League')
 fig, ax = plt.subplots(1, 1, figsize=(12, 8))
 ax.set_xlim(-30, 40)  # Límite de longitud para Europa
 ax.set_ylim(35, 72)   # Límite de latitud para Europa
-norm = colors.Normalize(vmin=df_pais["num_clubs"].min(), vmax=df_pais["num_clubs"].max()) # Normalizar los valores de 'num_clubs' para la leyenda
-cmap = plt.cm.coolwarm # Elegir un mapa de colores
-# Graficar el mapa con la leyenda personalizada
+
+# Definir los valores discretos y los colores correspondientes
+discrete_values = sorted(df_pais["num_clubs"].unique())  # Obtener los valores únicos de 'num_clubs'
+colors_list = ["#dbe9f6", "#91c6f0", "#4f93d3", "#7ce6e2", "#07314a", "#0b4a6f"]  # Colores personalizados
+cmap = ListedColormap(colors_list[:len(discrete_values)])  # Crear un colormap con los colores necesarios
+norm = BoundaryNorm(discrete_values + [max(discrete_values) + 1], cmap.N)  # Normalizar los valores discretos
+
+# Graficar el mapa con colores discretos y la leyenda
 europe.plot(
     column="num_clubs",
     cmap=cmap,
@@ -50,7 +55,8 @@ europe.plot(
     legend_kwds={
         'label': "Número de equipos en Champions por país",
         'orientation': "horizontal",
-        'shrink': 0.6  # Ajustar tamaño de la barra
+        'shrink': 0.6,  # Ajustar tamaño de la barra
+        'ticks': discrete_values  # Ajustar ticks para los valores discretos
     }
 )
 
@@ -64,7 +70,8 @@ plt.savefig(buffer, format="png", bbox_inches="tight")
 buffer.seek(0)
 
 # Mostrar el mapa en Streamlit
-st.image(buffer, caption="Mapa de Europa con Número de Equipos en Champions", use_column_width=True)
+st.image(buffer, caption="Mapa de Europa con Número de Equipos en Champions", use_container_width=True)
+
 
 st.subheader("Gráfica de Diferencia de Goles por Club")
 
