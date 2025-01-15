@@ -19,8 +19,8 @@ if st.session_state.page == "home":
         change_page("RobosTarjeta")
     elif st.button("Ir a Página 2"):
         change_page("pagina2")
-    elif st.button("Ir a Página 3"):
-        change_page("pagina3")
+    elif st.button("Juego limpio en los Clubes de la Champions League"):
+        change_page("Tarjetas_Jugadores")
 
 # Navegar a RobosTarjeta.py
 elif st.session_state.page == "RobosTarjeta":
@@ -33,6 +33,6 @@ elif st.session_state.page == "pagina2":
     app()
 
 # Navegar a pagina3.py
-elif st.session_state.page == "pagina3":
-    from pagina3 import app
+elif st.session_state.page == "Tarjetas_Jugadores":
+    from Tarjetas_Jugadores import app
     app()
