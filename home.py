@@ -17,8 +17,8 @@ if st.session_state.page == "home":
     # Botones de navegación
     if st.button("Efectividad Defensiva de los Clubes en la Champions League"):
         change_page("RobosTarjeta")
-    elif st.button("Ir a Página 2"):
-        change_page("pagina2")
+    elif st.button("La Champions League por Países"):
+        change_page("paises_equipos")
     elif st.button("Ir a Página 3"):
         change_page("pagina3")
 
@@ -28,8 +28,8 @@ elif st.session_state.page == "RobosTarjeta":
     app()
 
 # Navegar a pagina2.py
-elif st.session_state.page == "pagina2":
-    from pagina2 import app
+elif st.session_state.page == "paises_equipos":
+    from paises_equipos import app
     app()
 
 # Navegar a pagina3.py
