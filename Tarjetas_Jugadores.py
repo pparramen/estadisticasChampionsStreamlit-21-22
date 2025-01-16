@@ -33,7 +33,7 @@ def app():
         if card_type == "Amarilla":
             st.write("### Gráfico de tarjetas amarillas por equipo y posición:")
             plt.figure(figsize=(15, 8))  # Ajustar el tamaño del gráfico
-            plt.bar(summary['club'], summary['yellow'], color='skyblue')  # Gráfico de barras
+            plt.bar(summary['club'], summary['yellow'], color='darkorange')  # Gráfico de barras
             plt.xticks(rotation=90)  # Rotar etiquetas del eje X
             plt.title(f"Tarjetas Amarillas por Club (Filtrado por Posición: {', '.join(selected_position)})", fontsize=16)
             plt.xlabel("Club", fontsize=14)  # Etiqueta eje X
