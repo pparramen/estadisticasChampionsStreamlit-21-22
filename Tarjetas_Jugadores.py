@@ -6,11 +6,7 @@ import numpy as np
 def app():
     st.title("Análisis de Tarjetas Amarillas y Rojas por Jugador")
 
-    # Cargar el archivo CSV
-    uploaded_file = st.file_uploader("Sube tu archivo CSV", type=["csv"])
-    if uploaded_file is not None:
-    # Leer el archivo
-    data = pd.read_csv(uploaded_file)
+    data = pd.read_csv("baseDatos/disciplinary.csv")
 
     # Mostrar una vista previa de los datos
     st.write("### Datos cargados:")
