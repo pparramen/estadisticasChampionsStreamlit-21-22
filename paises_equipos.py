@@ -14,6 +14,15 @@ def app():
     goals = pd.read_csv("baseDatos/goals.csv")
     goalkeeping =  pd.read_csv("baseDatos/goalkeeping.csv")
     clubs = pd.read_csv("baseDatos/clubs.csv")
+    st.title('La Champions League en mapas')
+
+    # Mostramos una vista previa de los datos
+    st.subheader("Vista previa de los datos iniciales")
+    st.write("Datos de la tabla Goals:")
+    st.dataframe(goals.head())
+    st.write("Datos de la tabla Goalkeeping:")
+    st.dataframe(goalkeeping.head())
+    st.write("También tenemos una tabla para asociar los clubes a sus respectivos países.")
 
     #Agrupamos por club
     goals_grouped = goals.groupby('club', as_index=False)['goals'].sum()
@@ -30,7 +39,6 @@ def app():
 
     # Cargar el mapa de Europa
     world = gpd.read_file(gpd.datasets.get_path('naturalearth_lowres'))
-    print(world['name'].values)
     europe = world[world['continent'] == 'Europe']
     uk = world[world['name'] == 'United Kingdom']
     europe = pd.concat([europe, uk], ignore_index=True)
@@ -129,7 +137,7 @@ def app():
 
     # Mostrar el mapa en Streamlit
     st.image(buffer, use_container_width=True)
-    
+    st.caption("¿Dónde está Sturridge?")
     # Botón para volver al home
     if st.button("Volver a la Página Principal"):
         st.session_state.page = "home"  

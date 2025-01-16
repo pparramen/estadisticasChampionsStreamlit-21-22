@@ -17,7 +17,7 @@ if st.session_state.page == "home":
     # Botones de navegación
     if st.button("Efectividad Defensiva de los Clubes en la Champions League"):
         change_page("RobosTarjeta")
-    elif st.button("Países y Equipos en la Champions League"):
+    elif st.button("La Champions League por Países"):
         change_page("paises_equipos")
     elif st.button("Ir a Página 3"):
         change_page("pagina3")
