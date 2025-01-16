@@ -13,3 +13,9 @@ streamlit run home.py
 ```
 
 Este comando nos trasladará a la página principal del proyecto, donde se presentan tres botones. Al hacer doble clic en cada uno (esto es necesario para dar tiempo a que la página recargue correctamente), seremos redirigidos a distintas páginas. En cada una de ellas, podremos interactuar con diversos gráficos que visualizan las estadísticas de la Champions League 2021-2022.
+
+Creadores del proyecto:
+
+*Pablo Parra Méndez
+*Jerónimo Manuel Jiménez Mateos
+*Juan Soler Caparrós
